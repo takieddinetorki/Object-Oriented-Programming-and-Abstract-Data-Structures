@@ -9,7 +9,8 @@
 *.lo
 *.o
 *.obj
-
+*.pdb
+*.enc
 # Precompiled Headers
 *.gch
 *.pch
