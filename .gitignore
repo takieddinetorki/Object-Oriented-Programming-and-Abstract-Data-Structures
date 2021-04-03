@@ -3,7 +3,7 @@
 *.vs
 *.opendb
 *.TMP
-
+*.tlog
 # Compiled Object files
 *.slo
 *.lo
