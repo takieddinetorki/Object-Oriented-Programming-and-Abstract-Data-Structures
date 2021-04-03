@@ -11,6 +11,7 @@
 *.obj
 *.pdb
 *.enc
+*.vcxproj
 # Precompiled Headers
 *.gch
 *.pch
