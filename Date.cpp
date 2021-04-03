@@ -43,7 +43,7 @@ private:
 	int month, year, day;
 };
 
-
+/*
 int main()
 {
 	Date d(3, 2020, 29);
@@ -52,4 +52,4 @@ int main()
 	d.Print(2);
 	cout << endl;
 	d.Print(1);
-}
+}*/

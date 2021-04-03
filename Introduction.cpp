@@ -1,5 +1,4 @@
 #include <iostream>
-using namespace std;
 /*
 * Instruction:
 * Construct a program using an object-oriented approach to simulate the world, its people, and
@@ -21,26 +20,45 @@ using namespace std;
 *	- Don't try to copy paste the array given. Use pointers to point to the array without having to copy the data
 *	- There are ABSOLUTELY NO limitations to what you can use. So long as you get the program done that's what matters
 */
-/*
 class Human
 {
 private:
-	const string name;
-	int age, yearOfBirth, demise;
+	std::string name;
+	int birth, death;
 public:
-	Human(string name, int age, int yearOfBirth) : name(name), age(age),  yearOfBirth(yearOfBirth)
-	{}
-	~Human()
+	Human() {}
+	// This is ABSOLUTELY useless, just added for demonstration only
+	Human(std::string name) : name(name)
 	{
-		cout << "RIP: " << name << "\n" << yearOfBirth << " - " << demise;
+		setLifeCycle();
+		std::cout << name << " is set to be born in" << birth << ". Welcome to hell fella/lady\n";
+	}
+	~Human(){ std::cout << "RIP: " << name << " " << birth << " - " << death << "\n"; }
+	int getDeath() const {
+		return death;
+	}
+	int getBirth() const {
+		return birth;
+	}
+	std::string getName() const {
+		return name;
+	}
+	void setLifeCycle()
+	{
+		birth = rand() % 27 + 1995;
+		death = rand() % (2021 - birth + 1) + birth;
+	}
+	void setName(std::string name)
+	{
+		this->name = name;
 	}
 };
 int main()
 {
+	srand(time(0));
 	// Dataset of people
 	// Names
-	string names[50] =
-	{
+	std::string names[50] = {
 		"Taki","Jia Ying","Iris","Jun","Pei Yong","Jeremy","Michelle","Sin Yee","Daniel","Hazem",
 		"Mohammed","Ryan","Ritchie","Cheah","Hakim","Adel","Muadh","Khoo","Anayis","Anis",
 		"Lee","Xiong","Irfan","Iffah","Harold","Jeff","Tommy","John","Arthur","Anas",
@@ -52,11 +70,34 @@ int main()
 	for (size_t i = 0; i < 27; i++)
 	{
 		data[i] = 1995 + i;
-		cout << data[i] << endl;
+	}
+	// Set PEOPLE
+	Human people[50];
+	for (size_t i = 0; i < 50; i++)
+	{
+		people[i].setName(names[i]);
+		people[i].setLifeCycle();
 	}
 	// Construct the world (The world will never stop until you tell it to obviously)
+	int WORLD_YEAR = 1995;
 	while (true)
 	{
-
+		for (size_t i = 0; i < 50; i++)
+		{
+			if (people[i].getDeath() == WORLD_YEAR)
+			{
+				people[i].~Human();
+			}
+			else if (people[i].getBirth() == WORLD_YEAR)
+			{
+				std::cout << people[i].getName() << " is born. Welcome to hell fella/lady\n";
+			}
+		}
+		WORLD_YEAR++;
+		if (WORLD_YEAR == 2022)
+		{
+			std::cout << "END OF THE WORLD, PLEASE COME BACK LATER" << std::endl;
+			exit(-5);
+		}
 	}
-}*/
+}
