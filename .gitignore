@@ -2,6 +2,7 @@
 *.d
 *.vs
 *.opendb
+*.TMP
 
 # Compiled Object files
 *.slo
